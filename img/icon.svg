@@ -1,0 +1,32 @@
+<svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg"> 
+              
+  <!-- icons -->
+  
+  <symbol id="point" viewBox="0 0 16 16">
+  <circle cx="8" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></circle> 
+  </symbol>
+
+  <symbol id="icon-time" viewBox="0 0 24 24" fill="none">
+  <path d="M12 7V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="icon-color"  viewBox="0 0 16 16">
+  <circle cx="8" cy="8" r="4" fill="currentColor" stroke="none"></circle>
+  </symbol>
+
+  <symbol id="p-play" viewBox="0 0 24 24" fill="none" >
+  <path d="M8 18V6L18 12L11.3333 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/> 
+  </symbol>   
+
+  <symbol id="p-stop" viewBox="0 0 24 24" fill="none">
+  <path d="M9 6H6V18H18V15M13 6H18V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="icon-prev" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="currentColor">
+  <path d="M7 11.5L18 18V5z"/><path d="M6 18V5"/>
+  </symbol>
+
+  <symbol id="icon-next" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="currentColor"><path d="M17 11.5L6 18V5z"/><path d="M18 18V5"/>
+  </symbol> 
+
+</svg>
