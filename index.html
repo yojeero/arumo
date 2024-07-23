@@ -1,160 +1,177 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
 
-	<meta charset="utf-8">
-    
-	<meta name="viewport" content="width=device-width, initial-scale=1">  
-    
-	<title> Radio </title>
-    
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Radio</title>
+
 	<meta name="description" content="radio player vue.js audio vue.app" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    
-	<link rel="icon" type="image/svg+xml" href="img/fav.svg">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
-	<!-- Google Fonts --> 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="icon" type="image/svg+xml" href="img/fav.svg" />
 
-	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400&display=swap" rel="stylesheet">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-	<link href="https://fonts.googleapis.com/css2?family=Tulpen+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400&display=swap" rel="stylesheet" />
 
-		<!-- style CSS -->
-   <link href="css/style.css" rel="stylesheet"/> 
+	<link href="https://fonts.googleapis.com/css2?family=Tulpen+One&display=swap" rel="stylesheet" />
+
+	<!-- style CSS -->
+	<link href="css/style.css" rel="stylesheet" />
 
 </head>
 
 <body>
+	<!-- loader -->
+	<div class="loader">
+		<svg viewBox="-3 -4 39 39">
+			<polygon fill="#f1f1f1" stroke="#000" stroke-width="1" points="16,0 32,32 0,32"></polygon>
+		</svg>
+	</div>
 
-		<!-- loader -->
-		<div class="loader">
-			<svg viewBox="-3 -4 39 39"> <polygon fill="#008000" stroke="#fff" stroke-width="1.3" points="16,0 32,32 0,32"></polygon></svg>
-		</div>
-
-	<!-- player -->      
+	<!-- player -->
 
 	<div class="container" id="app">
 
-	<div class="player">
+		<div class="player">
+			<div class="top-icon">
 
-		<div class="top-icon">
+				<div class="point">
+					<a href="https://github.com/yojeero/" target="_blank">
+						<svg>
+							<use xlink:href="img/icon.svg#point"></use>
+						</svg>
+					</a>
+				</div>
 
-			<div class="point">
-				<a href="https://github.com/yojeero/" target="_blank">
-					<svg><use xlink:href="img/icon.svg#point"></use></svg>
-				</a>
+				<div>
+					<div class="live-time">
+						<svg>
+							<use xlink:href="img/icon.svg#icon-time"></use>
+						</svg>
+					</div>
+					<div class="online">{{ currentTime }}</div>
+				</div>
+
+				<div class="colors">
+					<input type="checkbox" id="switch" />
+					<label for="switch">
+						<svg>
+							<use xlink:href="img/icon.svg#icon-color"></use>
+						</svg>
+					</label>
+				</div>
 			</div>
 
-			<div>		
-				<div class="live-time">
-					<svg><use xlink:href="img/icon.svg#icon-time"></use></svg>				
-				</div>		
-				<div class="online">{{ currentTime }}</div>		
+			<div class="cover-img">
+				<transition-group :name="transitionName">
+					<div class="album-img" v-if="$index === currentTrackIndex"
+						:style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks" :key="$index"></div>
+				</transition-group>
 			</div>
 
-		    <div class="colors">
-				<input type="checkbox" id="switch" />
-				<label for="switch">
-					<svg><use xlink:href="img/icon.svg#icon-color"></use></svg>
-				</label>			
-			</div>	
-		
-		</div>
-
-		<div class="cover-img"> 
-
-			<transition-group :name="transitionName">
-			 <div class="album-img" v-if="$index === currentTrackIndex" :style="{ backgroundImage: `url(${track.cover})` }"  v-for="(track, $index) in tracks" :key="$index"></div>
-		   </transition-group>
-				
-		</div> 
-      	
-	 <div class="progress" ref="progress">
-
-		<div class="progress_bar" @click="clickProgress">
-		  <div class="line" :style="{ width : barWidth }"></div>
-		</div>       
-  
-	 </div>
-
-	<div class="main">
-	
-		<div class="album-info" v-if="currentTrack">
-			<div class="name">{{ currentTrack.name }}</div>
-			<div class="artist">{{ currentTrack.artist }}</div>
-		</div>
-	
-		<div class="player-controls">
-	
-			<div class="pn-icon" @click="prevTrack" @keyup.left="prevTrack" tabindex="0">
-				<svg>
-					<use xlink:href="img/icon.svg#icon-prev"></use>
-				</svg>
+			<div class="progress" ref="progress">
+				<div class="progress_bar" @click="clickProgress">
+					<div class="line" :style="{ width : barWidth }"></div>
+				</div>
 			</div>
-	
-			<div class="xl-icon" @click="play" onClick="spin();" @keyup.space="play" tabindex="0">
-				<svg>
-					<use xlink:href="img/icon.svg#p-stop" v-if="isTimerPlaying"></use>
-					<use xlink:href="img/icon.svg#p-play" v-else></use>
-				</svg>
+
+			<div class="main">
+				<div class="album-info" v-if="currentTrack">
+					<div class="name">{{ currentTrack.name }}</div>
+					<div class="artist">{{ currentTrack.artist }}</div>
+				</div>
+
+				<div class="player-controls">
+
+					<div class="pn-icon" @click="prevTrack" @keyup.left="prevTrack" tabindex="0">
+
+						<svg>
+							<use xlink:href="img/icon.svg#icon-prev"></use>
+						</svg>
+
+					</div>
+
+					<div class="xl-icon" @click="play" onClick="spin();" @keyup.space="play" tabindex="0">
+						<svg>
+							<use xlink:href="img/icon.svg#p-stop" v-if="isTimerPlaying"></use>
+							<use xlink:href="img/icon.svg#p-play" v-else></use>
+						</svg>
+					</div>
+
+					<div class="pn-icon" @click="nextTrack" @keyup.right="nextTrack" tabindex="0">
+						<svg>
+							<use xlink:href="img/icon.svg#icon-next"></use>
+						</svg>
+					</div>
+				</div>
 			</div>
-	
-			<div class="pn-icon" @click="nextTrack" @keyup.right="nextTrack" tabindex="0">
-				<svg>
-					<use xlink:href="img/icon.svg#icon-next"></use>
-				</svg>
-			</div>
-	
-		</div>
-	
-	</div>
-			
-		<div class="bottom-clock">	
-			
+
+			<div class="bottom-clock">
 				<div id="time"></div>
 				<div id="day"></div>
+			</div>
 
-		</div> 
+		</div><!-- end player -->
 
-      </div><!-- end player --> 
+	</div><!-- end container -->
 
-</div><!-- end container -->  
+	<!-- jQuery + Vue JS -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.1/dist/vue.min.js"></script>
+	<script src="js/vue.player.js"></script>
 
-    <!-- jQuery + Vue JS -->       
-    <script src="js/jquery.min.js"></script>
-    <script src="js/vue.min.js"></script>
-    <script src="js/vue.player.js"></script>  
+	<!-- loader hide -->
+	<script>
+		setTimeout(function () {
+			document.querySelector(".loader").style.display = "none";
+		}, 500);
+	</script>
 
- <!-- Loader hide -->  
-<script>
-	setTimeout(function(){document.querySelector('.loader').style.display='none'; }, 500 );
-</script>
+	<!-- SVG icons -->
+	<script src="https://cdn.jsdelivr.net/npm/svg4everybody@2.1.9/dist/svg4everybody.min.js" onload="svg4everybody({})"	async=""></script>
 
-     <!-- SVG icons -->
-<script src="js/svg4everybody.min.js"></script>
-<script>svg4everybody();</script>
-		
-			<!-- Change Skin Color	-->
+	<!-- Change Skin Color	-->
 	<script>
 		var $html = $("html");
-			$("#switch").on("change", function() {
-				if (this.checked) {
-					$html.addClass("second-theme");
-				} else {
-					$html.removeClass("second-theme");
-				}
+		$("#switch").on("change", function () {
+			if (this.checked) {
+				$html.addClass("second-theme");
+			} else {
+				$html.removeClass("second-theme");
+			}
 		});
-	</script> 
-			
-				<!-- clock -->
+	</script>
+
+	<!-- clock -->
 	<script>
-		let updateClock=()=>{let t=new Date,e=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],a=e[t.getDay()],d=String(t.getHours()).padStart(2,"0"),n=String(t.getMinutes()).padStart(2,"0"),u=`${d}:${n}`;document.getElementById("time").textContent=`${u}`,document.getElementById("day").textContent=`${a}`};setInterval(updateClock,1e3),updateClock();
-	</script> 
+		let updateClock = () => {
+			let t = new Date(),
+				e = [
+					"Sunday",
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday",
+					"Saturday",
+				],
+				a = e[t.getDay()],
+				d = String(t.getHours()).padStart(2, "0"),
+				n = String(t.getMinutes()).padStart(2, "0"),
+				u = `${d}:${n}`;
+			(document.getElementById("time").textContent = `${u}`),
+				(document.getElementById("day").textContent = `${a}`);
+		};
+		setInterval(updateClock, 1e3), updateClock();
+	</script>
 
 </body>
 </html>

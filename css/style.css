@@ -27,7 +27,7 @@ body
 	justify-content : center;
 
 	width : 100%;
-	height : 100%;	
+	height : 100%;
 
 	background : url(../img/dark.svg) no-repeat center, #121212;
 	background-size : cover;
@@ -81,7 +81,7 @@ body
 
 .point a
 {
-	color : #463f3a;
+	color : #57514c;
 }
 
 .live-time
@@ -93,7 +93,7 @@ body
 	user-select : none;
 	pointer-events : none;
 
-	color : #463f3a;
+	color : #57514c;
 }
 
 .colors
@@ -557,7 +557,7 @@ input:focus, input:active
 
 	margin : auto;
 
-	background : #008000;
+	background : #f1f1f1;
 }
 
 .loader svg
