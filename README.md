@@ -1,4 +1,4 @@
-<img src="preview/view.jpg">
+<img src="preview/preview.jpg">
 
 ### [Arumo](https://arumo.vercel.app/) - online radio player ###
 
