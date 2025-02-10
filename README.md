@@ -1,6 +1,6 @@
 <img src="preview/git.png">
 
-### [Arumo](https://arumo.vercel.app/) - online radio player ###
+### [Arumo](https://arumo.vercel.app/) - online radio player
 
 - 5 online radio stations presents
 - Any number of radio stations & covers in vue.player.js
