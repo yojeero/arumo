@@ -1,10 +1,6 @@
-<img src="preview/preview.jpg">
+<img src="preview/git.png">
 
 ### [Arumo](https://arumo.vercel.app/) - online radio player ###
-
-```
-Features
-```
 
 - 5 online radio stations presents
 - Any number of radio stations & covers in vue.player.js
@@ -16,5 +12,3 @@ Features
 - Google Fonts
 - jQuery, VueJS
 - Animations
-
--- All images and icons are for demonstration purposes only --
