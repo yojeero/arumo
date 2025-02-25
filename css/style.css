@@ -15,6 +15,29 @@ input, button, textarea, select { font-family: inherit; font-size: inherit; }
 ol, ul { list-style: none; margin: 0; padding: 0; }
 a { color: currentColor; cursor: pointer; text-decoration: none; }
 
+/* ---- font ------ */
+
+@font-face
+{
+	font-family : Jost;
+	font-weight : 400;
+	font-style : normal;
+
+	font-display : swap;
+	src : url('../fonts/jost.woff2') format('woff2');
+}
+
+
+@font-face
+{
+	font-family : 'Tulpen One';
+	font-weight : 400;
+	font-style : normal;
+
+	font-display : swap;
+	src : url('../fonts/tulpen-one.woff2') format('woff2');
+}
+  
 /* ---- main ------ */
 
 body
