@@ -59,7 +59,8 @@
 			<div class="cover-img">
 				<transition-group :name="transitionName">
 					<div class="album-img" v-if="$index === currentTrackIndex"
-						:style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks" :key="$index"></div>
+						:style="{ backgroundImage: `url(${track.cover})` }" v-for="(track, $index) in tracks"
+						:key="$index"></div>
 				</transition-group>
 			</div>
 
@@ -114,13 +115,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.7.1/dist/vue.min.js"></script>
 	<script src="js/vue.player.js"></script>
 
-	<!-- loader hide -->
-	<script>
-		setTimeout(function () {
-			document.querySelector(".loader").style.display = "none";
-		}, 500);
-	</script>
-
 	<!-- clock -->
 	<script>
 		let updateClock = () => {
@@ -144,5 +138,16 @@
 		setInterval(updateClock, 1e3), updateClock();
 	</script>
 
+	<!-- LOADER HIDE -->
+	<script>
+		window.addEventListener("load", () => {
+			const loader = document.querySelector(".loader");
+			if (!loader) return;
+			loader.classList.add("opacity-0");
+			setTimeout(() => loader.remove(), 300);
+		});
+	</script>
+
 </body>
+
 </html>

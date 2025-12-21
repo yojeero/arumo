@@ -1,13 +1,13 @@
-<img src="preview/git.png">
+<img src="preview/git.webp">
 
-### [Arumo](https://arumo.vercel.app/) - online radio player
+### [Arumo](https://arumo.vercel.app/) - Vue radio player
 
-- 5 online radio stations presents
-- Any number of radio stations & covers in vue.player.js
-- Vue.js based player
-- HTML5, CSS3
+- 5 preset radio stations
+- Any radio stations and covers
+- Vue.js online player
+- HTML5 and CSS
 - Clock with time and day of week
-- 100% Responsive Design
+- 100% Responsive
 - Flexbox, jQuery
-- SVG icons, Google Fonts
-- Animations
+- Google Fonts
+- SVG icons
