@@ -2,7 +2,7 @@
     {
         "name": "antenne bayern",
         "artist": "Fresh",
-        "cover": "./images/p1.png",
+        "cover": "../images/p1.png",
         "src": "https://stream.antenne.de/fresh/stream/aacp",
         "color": [
             200,
@@ -13,7 +13,7 @@
     {
         "name": "deluxe music",
         "artist": "Lounge",
-        "cover": "./images/p2.png",
+        "cover": "../images/p2.png",
         "src": "https://audiostreams.deluxemusic.tv/lounge/aac-64/tunein/",
         "color": [
             200,
@@ -24,7 +24,7 @@
     {
         "name": "antenne bayern",
         "artist": "Pop XXL",
-        "cover": "./images/p3.png",
+        "cover": "../images/p3.png",
         "src": "https://stream.antenne.de/pop-xxl/stream/aacp",
         "color": [
             200,
@@ -35,7 +35,7 @@
     {
         "name": "city23",
         "artist": "Premium Pop",
-        "cover": "./images/p4.png",
+        "cover": "../images/p4.png",
         "src": "https://live.stream.maxfive.com/max5-city23",
         "color": [
             200,
