@@ -38,13 +38,12 @@ window.WaveformVisualizer = (() => {
     }
 
     resizeCanvas();
-    drawIdle(); // статичный idle сразу при загрузке
+    drawIdle(); 
     window.addEventListener("resize", resizeCanvas);
 
-    // Мягкий breathing idle без нагрузки
     setInterval(() => {
       if (!running) drawIdle();
-    }, 120); // увеличенный интервал для слабых девайсов
+    }, 120); 
   }
 
   function resizeCanvas() {
@@ -58,7 +57,7 @@ window.WaveformVisualizer = (() => {
     colorFrom = [...colorTo];
     colorTo = rgb;
     mix = 0;
-    if (!running) drawIdle(); // сразу применяем цвет для idle
+    if (!running) drawIdle(); 
   }
 
   function lerp(a, b, t) {
@@ -89,7 +88,7 @@ window.WaveformVisualizer = (() => {
     ctx.fillStyle = `rgb(${r},${g},${b})`;
 
     const time = Date.now();
-    const breath = 0.08 + 0.015 * Math.sin(time * 0.001); // плавный пульс
+    const breath = 0.08 + 0.015 * Math.sin(time * 0.001); 
 
     for (let i = 0; i < BAR_COUNT; i++) {
       const t = Math.abs(i / (BAR_COUNT - 1) - 0.5) * 2;
@@ -173,7 +172,7 @@ window.WaveformVisualizer = (() => {
 
   function stop() {
     running = false;
-    drawIdle(); // возвращаем статичный idle
+    drawIdle(); 
   }
 
   return { init, resizeCanvas, start, stop, setColor, drawIdle };

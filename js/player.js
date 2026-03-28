@@ -150,7 +150,7 @@ function setPlayerState(state) {
 
   /* -------------------- INIT -------------------- */
   (async function init() {
-    tracks = await fetch("js/tracks.json").then(r => r.json());
+    tracks = await fetch("/js/tracks.json").then(r => r.json());
     initVisualizer();
     loadTrack(0);
   })();
